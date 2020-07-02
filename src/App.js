@@ -1,11 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
+import TeamBuilder from './features/teamBuilder/TeamBuilder';
+import { AddTeamMemberModal } from './features/addTeamMemberModal/AddTeamMemberModal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <nav className="mb-5 mt-5 text-center">
+        <a className="mr-3 btn btn-outline-primary" to="/hello_world">Go to Hello World</a>
+        <a className="btn btn-outline-primary" to="/team_builder">Go to Team Builder</a>
+      </nav>
+
+      <TeamBuilder />
+      <AddTeamMemberModal />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />

@@ -1,0 +1,27 @@
+.userPicContainer {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
+}
+
+.userPic {
+  height: 50px;
+  filter: grayscale(100%) opacity(1);
+}
+
+.clearPanel {
+  padding: 15px 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: transparent;
+  line-height: 20px;
+}
+
+a{
+  color: #333;
+}
