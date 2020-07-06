@@ -5,6 +5,6 @@ import teamBuilderReducer from '../features/teamBuilder/teamBuilderSlice';
 export default configureStore({
   reducer: {
     counter: counterReducer,
-    teamMembers: teamBuilderReducer
+    teamBuilder: teamBuilderReducer
   },
 });

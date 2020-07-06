@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import TeamBuilder from './features/teamBuilder/TeamBuilder';
-import { AddTeamMemberModal } from './features/addTeamMemberModal/AddTeamMemberModal';
+import AddTeamMemberModal from './features/addTeamMemberModal/AddTeamMemberModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 

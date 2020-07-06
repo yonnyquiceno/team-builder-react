@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {Container, Row, Col} from 'react-bootstrap'
 import {TeamMember} from '../teamMember/TeamMember'
 import styles from './TeamBuilder.module.css';
+import {Button} from 'react-bootstrap'
+import {fetchTeamMembers, setShowAddTeamMemberModal} from './teamBuilderSlice'
 
 const TeamBuilder = props => {
-  const {teamMembers} = props
+  const [teamMembers, setTeamMembers] = useState(props.teamMembers)
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTeamMembers())
+  }, [dispatch]);
+
+  useEffect(() => {
+    setTeamMembers(props.teamMembers)
+  }, [props.teamMembers]);
+
+  const handleOpenModal = () => {
+    dispatch(setShowAddTeamMemberModal(true))
+  }
 
   return (
     <Container>
@@ -20,10 +34,10 @@ const TeamBuilder = props => {
             </Col>
 
             <Col sm={5} className="text-right">
-              <a className="text-primary">
+              <Button variant="link" onClick={handleOpenModal} className="text-primary font-weight-bold">
                 <b-icon-person-plus-fill className="mr-2"></b-icon-person-plus-fill>
                 ADD NEW USER
-              </a>
+              </Button>
             </Col>
           </Row>
         </div>
@@ -35,8 +49,6 @@ const TeamBuilder = props => {
             </Col> 
           })}
         </Row>
-
-        {/* <AddTeamMemberModal></AddTeamMemberModal> */}
       </div>
     </Container>
   );
@@ -44,7 +56,7 @@ const TeamBuilder = props => {
 
 const mapStateToProps = state => {
   return {
-    teamMembers: state.teamMembers
+    teamMembers: state.teamBuilder.teamMembers
   };
 };
 

@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {Container, Row, Col} from 'react-bootstrap'
+import React from 'react';
+import {useDispatch} from 'react-redux'
+import {Container, Row, Col, Button} from 'react-bootstrap'
 import styles from './TeamMember.module.css';
+import {deleteTeamMember} from '../teamBuilder/teamBuilderSlice'
 
 export function TeamMember(props) {
-  const dispatch = useDispatch();
-  const {name, jobTitle, photo} = props.teamMember
+  const {name, job_title: jobTitle, photo} = props.teamMember
+  const dispatch = useDispatch()
 
   const removeUser = () => {
-    console.log('removed!!')
+    dispatch(deleteTeamMember(props.teamMember))
   }
 
   return (
     <Container>
-      <div className={styles.clearPanel}>
+      <div className={`${styles.clearPanel} mb-3`}>
         <Row>
           <Col md={4}>
             <div className={styles.userPicContainer}>
-              <img className={styles.userPic} src={photo}/>
+              <img className={styles.userPic} src={photo} alt="User"/>
             </div>
           </Col>
 
           <Col md={8}>
-            <div className="font-weight-bold"><a href={photo} target="_blank">{name}</a></div>
-            <div className="text-secondary">{jobTitle || '&mdash;'}</div>
-            <div><a onClick={removeUser}>Remove User</a></div>
+            <div className="font-weight-bold"><a href={photo} target="_blank" rel="noopener noreferrer">{name}</a></div>
+            <div className="text-secondary">{jobTitle}</div>
+            <div><Button variant="link" className="p-0 text-dark" onClick={removeUser}>Remove User</Button></div>
           </Col>
         </Row>
       </div>
