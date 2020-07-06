@@ -8,11 +8,13 @@ const AddTeamMemberModal = props => {
   const [formValues, setFormValues] = useState({name: '', jobTitle: '', photo: ''})
 
   const handleClose = () => dispatch(setShowAddTeamMemberModal(false));
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createTeamMember(formValues))
     handleClose()
   };
+
   const handleInputChange = e => {
     const {name, value} = e.target
     setFormValues({...formValues, [name]: value})

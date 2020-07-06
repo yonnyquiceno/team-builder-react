@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import { useDispatch } from 'react-redux';
 import {Container, Row, Col} from 'react-bootstrap'
 import {TeamMember} from '../teamMember/TeamMember'
+import AddTeamMemberModal from '../addTeamMemberModal/AddTeamMemberModal'
 import styles from './TeamBuilder.module.css';
 import {Button} from 'react-bootstrap'
 import {fetchTeamMembers, setShowAddTeamMemberModal} from './teamBuilderSlice'
+import { BsFillPersonPlusFill } from 'react-icons/bs'
 
 const TeamBuilder = props => {
   const [teamMembers, setTeamMembers] = useState(props.teamMembers)
@@ -34,10 +36,10 @@ const TeamBuilder = props => {
             </Col>
 
             <Col sm={5} className="text-right">
-              <Button variant="link" onClick={handleOpenModal} className="text-primary font-weight-bold">
-                <b-icon-person-plus-fill className="mr-2"></b-icon-person-plus-fill>
+              <button onClick={handleOpenModal} className="font-weight-bold text-primary button-link">
+                <BsFillPersonPlusFill className='mr-2'/>
                 ADD NEW USER
-              </Button>
+              </button>
             </Col>
           </Row>
         </div>
@@ -46,10 +48,11 @@ const TeamBuilder = props => {
           {teamMembers.map((teamMember, index) => {
             return <Col sm={4} key={index + teamMember.name}>
               <TeamMember teamMember={teamMember} className="mb-3"></TeamMember>
-            </Col> 
+            </Col>
           })}
         </Row>
       </div>
+      <AddTeamMemberModal />
     </Container>
   );
 }

@@ -13,22 +13,20 @@ export function TeamMember(props) {
   }
 
   return (
-    <Container>
-      <div className={`${styles.clearPanel} mb-3`}>
-        <Row>
-          <Col md={4}>
-            <div className={styles.userPicContainer}>
-              <img className={styles.userPic} src={photo} alt="User"/>
-            </div>
-          </Col>
+    <div className={`${styles.clearPanel} mb-3`}>
+      <Row>
+        <Col md={4}>
+          <div className={styles.userPicContainer}>
+            <img className={styles.userPic} src={photo} alt="User"/>
+          </div>
+        </Col>
 
-          <Col md={8}>
-            <div className="font-weight-bold"><a href={photo} target="_blank" rel="noopener noreferrer">{name}</a></div>
-            <div className="text-secondary">{jobTitle}</div>
-            <div><Button variant="link" className="p-0 text-dark" onClick={removeUser}>Remove User</Button></div>
-          </Col>
-        </Row>
-      </div>
-    </Container>
+        <Col md={8}>
+          <div><a href={photo} target="_blank" className="font-weight-bold text-dark" rel="noopener noreferrer">{name}</a></div>
+          <div className="text-secondary">{jobTitle}</div>
+          <div><button className="p-0 text-dark button-link" onClick={removeUser}>Remove User</button></div>
+        </Col>
+      </Row>
+    </div>
   );
 }
