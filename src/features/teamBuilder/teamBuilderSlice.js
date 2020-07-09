@@ -45,8 +45,8 @@ export const createTeamMember = teamMember => dispatch => {
   });
 
   axios.post(`http://localhost:3000/team_members`, {team_member: teamMember})
-  .then(() => {
-    dispatch(addTeamMember(teamMember));
+  .then((res) => {
+    dispatch(addTeamMember(res.data));
   })
 };
 
